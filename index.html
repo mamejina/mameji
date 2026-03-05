@@ -21,6 +21,7 @@
 --dark: #D0D7F2;
 --text-on-white: #1A1B41;
 --glow: rgba(157, 114, 255, 0.4);
+--accent-red: #FF6B6B;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Mitr',sans-serif;}
@@ -91,9 +92,8 @@ border-radius: 22px;
 }
 
 h1,h2,h3{color:var(--night-bg-main); margin-bottom: 10px;}
-/* ลดความเรืองแสงตรงชื่อลงตามรีเควส */
 h1 { font-size: 28px; color: var(--moon-yellow); text-shadow: 0 0 5px rgba(255, 249, 215, 0.6); text-align: center;}
-h2 { font-size: 20px; border-bottom: 1px dashed #D0D7F2; padding-bottom: 5px;}
+h2 { font-size: 20px; border-bottom: 1px dashed #D0D7F2; padding-bottom: 5px; display: flex; align-items: center; gap: 8px;}
 
 .logo-wrapper {position: relative; width: 150px; height: 150px; margin: 0 auto 20px;}
 .logo-deco {position: absolute; font-size: 28px; animation: floatLogoDeco 3s infinite ease-in-out; text-shadow: 0 0 8px var(--moon-yellow); z-index: 3;}
@@ -117,6 +117,18 @@ h2 { font-size: 20px; border-bottom: 1px dashed #D0D7F2; padding-bottom: 5px;}
 
 .step{display:flex; align-items:center; gap:12px; margin-bottom:12px; padding: 12px; background: #F4F6FF; border-radius: 15px;}
 .step-num{background: var(--gradient-main); color:#fff; width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:14px;}
+
+.rule-item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.rule-item:last-child { border-bottom: none; }
+.rule-bullet { color: var(--accent-red); font-weight: bold; }
 
 .price-row{display:flex; justify-content:space-between; align-items: center; margin-bottom:10px; background:#fff; padding:10px 15px; border-radius:15px; border: 1px solid #E0E6FF;}
 .price-tag{background: var(--gradient-outline); color: var(--night-bg-deep); padding:4px 12px; border-radius:20px; font-size:14px; font-weight: 600;}
@@ -172,15 +184,25 @@ h2 { font-size: 20px; border-bottom: 1px dashed #D0D7F2; padding-bottom: 5px;}
     <div class="price-row"><span>ลิงก์ไบโอ/ชีทคิว/ทำเว็บ</span><span class="price-tag">49–179฿</span></div>
     <div class="price-row"><span>เข้ากลุ่มต่างๆ</span><span class="price-tag">39–999฿+</span></div>
     <p class="small" style="text-align:center; color: var(--text-on-white);">*เร่งงาน +20฿ ต่อชิ้น / แก้ฟรีถ้าผิดบรีฟ</p>
+</div>
+
+<div class="section">
+    <h2>⚖️ กฎของร้าน</h2>
+    <div class="rule-item"><span class="rule-bullet">-</span><span>ไม่คืนตังทุกกรณีค่ะ ยกเว้นร้านเสนอคืน</span></div>
+    <div class="rule-item"><span class="rule-bullet">-</span><span>ยังไม่เลยเดดไล งดเร่ง งดจิก หรือ ส่องงานค่ะ</span></div>
+    <div class="rule-item"><span class="rule-bullet">-</span><span>ไม่อนุญาตให้นำงานไปขายต่อ แจก แถม ทุกกรณีหากไม่ใช้แล้ว [กรณีเป็น ป้าย ปกกลุ่ม ตัวอย่างกลุ่ม อนุญาตค่ะ]</span></div>
+    <div class="rule-item"><span class="rule-bullet">-</span><span>งานจะถูกลบทุกวันที่ 25 ของทุกเดือนไม่เซฟงานไม่รู้ด้วยนะคะ</span></div>
+    <div class="rule-item"><span class="rule-bullet">-</span><span>ไม่รับแก้งานจากร้านอื่นค่ะ</span></div>
+    <div class="rule-item"><span class="rule-bullet">-</span><span>ห้ามตัด แคบรูป ไปสอบถามพิกัด งานทุกงานมีเจ้าของ</span></div>
+    <div class="rule-item"><span class="rule-bullet">-</span><span style="color:var(--night-bg-main); font-weight:500;">อยากได้พิกัดสอบถามแอดได้ค่ะใจดี</span></div>
     <a href="https://www.facebook.com/man.phea.xrxy.na?" class="btn btn-main">สอบถามเพิ่มเติม</a>
 </div>
 
 <div class="footer">
-    <a href="https://www.facebook.com/man.phea.xrxy.na?" class="btn btn-main">สั่งงานผ่าน Facebook คลิก 🎀</a>
-    
+    <a href="https://line.me/ti/p/ogYjoWHAIO" class="btn btn-main">สั่งงานผ่าน LINE คลิก 🎀</a>
     <div class="socials">
-        <a href="https://line.me/ti/p/ogYjoWHAIO">Line</a>
         <a href="https://www.facebook.com/man.phea.xrxy.na?">Facebook</a>
+        <a href="https://line.me/ti/p/ogYjoWHAIO">Line</a>
         <a href="https://linkbio.co/7062403019HNn">Portfolio</a>
     </div>
     <p class="small">© 2026 Mameji Store | งานลบทุกวันที่ 25 ของเดือน</p>
