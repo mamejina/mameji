@@ -9,33 +9,45 @@
 
 <style>
 :root{
-/* ปรับโทนสีตามที่ระบุ: ชมพู ฟ้า ม่วง */
---bg:#F0F7FF; /* ฟ้าอ่อน */
---main:#F6A5C9; /* ชมพูหลัก */
---dark:#9D72FF; /* ม่วง */
---white:#FFFFFF;
---glow:rgba(246,165,201,0.4);
+/* ปรับโทนสีใหม่: ชมพู ม่วง ฟ้า ไล่สี */
+--pink-light: #FFDDEE; /* ชมพูอ่อน */
+--pink-main: #F6A5C9; /* ชมพูหลัก */
+--purple-main: #9D72FF; /* ม่วง */
+--blue-light: #E0F0FF; /* ฟ้าอ่อน */
+--blue-main: #A0CFFF; /* ฟ้าหลัก */
+--white: #FFFFFF;
+
+/* ไล่สีหลัก (ชมพู-ม่วง-ฟ้า) */
+--gradient-main: linear-gradient(135deg, var(--pink-main) 0%, var(--purple-main) 50%, var(--blue-main) 100%);
+/* ไล่สีพื้นหลัง (ชมพูอ่อน-ฟ้าอ่อน) */
+--gradient-bg: linear-gradient(to bottom, var(--pink-light) 0%, var(--white) 50%, var(--blue-light) 100%);
+/* ไล่สีปุ่มเส้นประ (ม่วง-ฟ้า) */
+--gradient-outline: linear-gradient(135deg, var(--purple-main) 0%, var(--blue-main) 100%);
+
+--dark: #6A4C9C; /* สีข้อความเข้ม (โทนม่วง) */
+--glow: rgba(157, 114, 255, 0.3); /* แสงเรืองแสง (โทนม่วง) */
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Mitr',sans-serif;}
 
 body{
-background:var(--bg);
+background: var(--gradient-bg); /* พื้นหลังไล่สี */
 display:flex;
 justify-content:center;
-position: relative; /* สำหรับ floating elements */
-overflow-x: hidden; /* กันสกอลบาร์แนวนอน */
+position: relative;
+overflow-x: hidden;
+color: var(--dark); /* สีข้อความทั่วไป */
 }
 
-/* --- พื้นหลังฟุ้งๆ --- */
+/* --- พื้นหลังฟุ้งๆ (คงไว้) --- */
 body::before,
 body::after {
 content: '🪼 🫧 🪼 🫧';
 position: fixed;
 font-size: 30px;
-opacity: 0.15; /* ความโปร่งใส */
-z-index: -1; /* อยู่หลังเนื้อหา */
-pointer-events: none; /* กดไม่ได้ */
+opacity: 0.1; /* ปรับลดความเข้มลงเล็กน้อย */
+z-index: -1;
+pointer-events: none;
 }
 
 body::before {
@@ -48,7 +60,7 @@ body::after {
 bottom: 10%;
 right: 5%;
 animation: floatBg 20s infinite ease-in-out reverse;
-content: '🫧 🪼 🫧 🪼'; /* สลับลำดับ */
+content: '🫧 🪼 🫧 🪼';
 }
 
 @keyframes floatBg {
@@ -60,8 +72,8 @@ content: '🫧 🪼 🫧 🪼'; /* สลับลำดับ */
 max-width:500px;
 width:100%;
 padding:20px 15px 40px;
-position: relative; /* สำหรับ floating elements */
-z-index: 1; /* อยู่หน้าเนื้อหาพื้นหลัง */
+position: relative;
+z-index: 1;
 }
 
 .section{
@@ -69,38 +81,63 @@ background:var(--white);
 border-radius:20px;
 padding:25px 20px;
 margin-bottom:20px;
-box-shadow:0 8px 20px rgba(0,0,0,0.05);
-border:2px solid var(--main);
-position: relative; /* สำหรับ floating elements */
+box-shadow:0 8px 20px rgba(0,0,0,0.03); /* ปรับเงาให้นุ่มขึ้น */
+position: relative;
+/* --- กรอบ Section ไล่สี --- */
+border: 2px solid transparent;
+background-clip: padding-box; /* ให้พื้นหลังสีขาวอยู่ด้านใน */
 }
 
-h1,h2,h3{color:var(--dark);}
+/* สร้างกรอบไล่สีโดยใช้ pseudo-element */
+.section::after {
+content: '';
+position: absolute;
+top: -2px; left: -2px; right: -2px; bottom: -2px;
+z-index: -1;
+background: var(--gradient-main); /* กรอบไล่สีชมพู-ม่วง-ฟ้า */
+border-radius: 22px; /* โค้งตาม section */
+}
+
+h1,h2,h3{
+color:var(--purple-main); /* หัวข้อเป็นสีม่วงหลัก */
+background: var(--gradient-main); /* หรือจะใช้ gradient ที่ข้อความก็ได้ */
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+display: inline-block; /* เพื่อให้ gradient ทำงานกับ text */
+margin-bottom: 10px;
+}
+
+h1 { font-size: 28px; }
+h2 { font-size: 20px; margin-bottom: 15px;}
+
 .center{text-align:center;}
 
 .logo-wrapper {
-position: relative; /* สำหรับ floating elements รอบๆ */
+position: relative;
 width: 150px;
 height: 150px;
 margin: 0 auto 20px;
 }
 
-/* --- อิโมจิฟุ้งๆ รอบโลโก้ --- */
+/* --- อิโมจิฟุ้งๆ รอบโลโก้ (คงไว้) --- */
 .logo-deco {
 position: absolute;
 font-size: 24px;
-opacity: 0.7;
+opacity: 0.6;
 pointer-events: none;
 animation: floatLogoDeco 4s infinite ease-in-out;
+/* ปรับสีอิโมจิให้เข้ากับโทนใหม่ (ชมพู-ม่วง-ฟ้า) */
+color: var(--purple-main);
 }
 
-.logo-deco-1 { top: -10px; left: -10px; animation-delay: 0s; }
-.logo-deco-2 { top: -10px; right: -10px; animation-delay: 1s; }
-.logo-deco-3 { bottom: -10px; left: -10px; animation-delay: 2s; }
-.logo-deco-4 { bottom: -10px; right: -10px; animation-delay: 3s; }
+.logo-deco-1 { top: -10px; left: -10px; animation-delay: 0s; color: var(--pink-main); }
+.logo-deco-2 { top: -10px; right: -10px; animation-delay: 1s; color: var(--blue-main); }
+.logo-deco-3 { bottom: -10px; left: -10px; animation-delay: 2s; color: var(--blue-main); }
+.logo-deco-4 { bottom: -10px; right: -10px; animation-delay: 3s; color: var(--pink-main); }
 
 @keyframes floatLogoDeco {
-0%, 100% { transform: translateY(0) scale(1); opacity: 0.7; }
-50% { transform: translateY(-10px) scale(1.1); opacity: 1; }
+0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+50% { transform: translateY(-10px) scale(1.1); opacity: 0.9; }
 }
 
 .logo{
@@ -108,9 +145,10 @@ width:100%;
 height:100%;
 border-radius:50%;
 overflow:hidden;
-box-shadow:0 6px 20px var(--glow);
-position: relative; /* ให้อยู่หน้า deco */
+box-shadow:0 6px 20px var(--glow); /* แสงเรืองแสงโทนม่วง */
+position: relative;
 z-index: 2;
+border: 4px solid var(--white); /* เพิ่มขอบขาวรอบโลโก้ให้เด่น */
 }
 
 .logo img{width:100%;height:100%;object-fit:cover;}
@@ -127,9 +165,22 @@ margin-bottom:20px;
 background:#fff;
 padding:8px 16px;
 border-radius:25px;
-box-shadow:0 4px 10px var(--glow);
+box-shadow:0 4px 10px rgba(0,0,0,0.03); /* เงาบางๆ */
 font-size:13px;
 color:var(--dark);
+border: 1px solid #F0E6FF; /* ขอบม่วงอ่อนมากๆ */
+display: flex;
+align-items: center;
+gap: 5px;
+}
+
+.badge::before { /* เพิ่มจุดสีไล่ระดับด้านหน้า badge */
+content: '';
+width: 8px;
+height: 8px;
+border-radius: 50%;
+background: var(--gradient-main);
+display: inline-block;
 }
 
 .btn{
@@ -140,80 +191,132 @@ border-radius:25px;
 text-decoration:none;
 margin-top:15px;
 font-weight:500;
+transition: transform 0.2s ease, box-shadow 0.2s ease; /* เพิ่ม transition */
+}
+
+.btn:hover {
+transform: translateY(-2px); /* ยกตัวขึ้นเมื่อ hover */
+box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .btn-outline{
 background:#fff;
-border:2px dashed var(--main);
-color:var(--dark);
+/* --- ปุ่มเส้นประไล่สี --- */
+border: 2px dashed transparent;
+background-clip: padding-box;
+position: relative;
+color: var(--dark);
+}
+
+.btn-outline::after {
+content: '';
+position: absolute;
+top: -2px; left: -2px; right: -2px; bottom: -2px;
+z-index: -1;
+background: var(--gradient-outline); /* ไล่สีม่วง-ฟ้า */
+border-radius: 27px; /* โค้งตามปุ่ม */
 }
 
 .btn-main{
-background:var(--main);
+/* --- ปุ่มสีหลักไล่สี --- */
+background: var(--gradient-main); /* ไล่สีชมพู-ม่วง-ฟ้า */
 color:#fff;
+box-shadow: 0 4px 15px var(--glow); /* แสงเรืองแสงโทนม่วง */
 }
 
 .step{
 display:flex;
 align-items:center;
 gap:12px;
-margin-bottom:12px;
+margin-bottom:15px;
+padding: 10px;
+background: #F9F5FF; /* พื้นหลัง step นุ่มๆ */
+border-radius: 15px;
 }
 
 .step-num{
-background:var(--main);
+/* --- ตัวเลข step ไล่สี --- */
+background: var(--gradient-main);
 color:#fff;
-width:26px;height:26px;
+width:28px;height:28px; /* ปรับขนาดเล็กน้อย */
 border-radius:50%;
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:13px;
+font-size:14px;
+font-weight: 500;
+box-shadow: 0 2px 5px var(--glow);
 }
 
 .price-row{
 display:flex;
 justify-content:space-between;
-margin-bottom:10px;
+align-items: center;
+margin-bottom:12px;
 background:#fffcfd;
-padding:10px 15px;
+padding:12px 15px; /* ปรับ padding */
 border-radius:15px;
+border: 1px solid #FFE6F2; /* ขอบชมพูอ่อนมากๆ */
+}
+
+.price-row span:first-child {
+font-weight: 400;
+color: var(--dark);
 }
 
 .price-tag{
-background:var(--main);
+/* --- ป้ายราคาไล่สี --- */
+background: var(--gradient-outline); /* ไล่สีม่วง-ฟ้า */
 color:#fff;
-padding:3px 12px;
+padding:4px 14px; /* ปรับ padding */
 border-radius:20px;
 font-size:14px;
+font-weight: 500;
+box-shadow: 0 2px 5px rgba(160, 207, 255, 0.3);
 }
 
 .footer{
 text-align:center;
-margin-top:30px;
+margin-top:40px; /* เพิ่ม margin */
+padding-top: 20px;
+border-top: 1px solid #F0E6FF; /* เส้นคั่นม่วงอ่อน */
 }
 
 .socials{
 display:flex;
-gap:8px;
+gap:10px; /* เพิ่ม gap */
 justify-content:center;
-margin-top:15px;
+margin-top:20px;
+flex-wrap: wrap; /* ให้แน่ใจว่าไม่ล้น */
 }
 
 .socials a{
 flex:1;
-max-width:100px;
+min-width:100px; /* กำหนดความกว้างขั้นต่ำ */
+max-width:120px; /* กำหนดความกว้างสูงสุด */
 text-align:center;
-padding:8px;
+padding:10px; /* ปรับ padding */
 border-radius:25px;
 background:#fff;
 text-decoration:none;
 color:var(--dark);
 font-size:13px;
-border:1px solid #ffeef5;
+border:1px solid #F0E6FF; /* ขอบม่วงอ่อน */
+box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+transition: background 0.2s ease, color 0.2s ease;
 }
 
-.small{font-size:12px;opacity:.7;margin-top:10px;}
+.socials a:hover {
+background: var(--purple-main);
+color: #fff;
+}
+
+.small{
+font-size:12px;
+opacity:.7;
+margin-top:15px;
+color: var(--dark);
+}
 </style>
 </head>
 
@@ -276,7 +379,7 @@ border:1px solid #ffeef5;
 <div class="price-row"><span>ลิงก์ไบโอ/ชีทคิว</span><span class="price-tag">49–179฿</span></div>
 <div class="price-row"><span>เข้ากลุ่มต่างๆ</span><span class="price-tag">39–999฿+</span></div>
 
-<p class="small" style="text-align:center; margin-top:10px;">*เร่งงาน +20฿ ต่อชิ้น / แก้ฟรีถ้าผิดบรีฟ</p>
+<p class="small" style="text-align:center; margin-top:15px; margin-bottom: 5px;">*เร่งงาน +20฿ ต่อชิ้น / แก้ฟรีถ้าผิดบรีฟ</p>
 <a href="https://www.facebook.com/man.phea.xrxy.na?" class="btn btn-main">สอบถามเพิ่มเติม</a>
 </div>
 
