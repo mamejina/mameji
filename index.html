@@ -9,50 +9,34 @@
 
 <style>
 :root{
-/* โทนสีท้องฟ้ากลางคืน: น้ำเงินเข้ม ม่วงค่ำ ดำอมฟ้า */
---night-bg: #0B1026; 
---night-deep: #1A1B41;
---star-white: #FFFFFF;
+--night-bg: #161B3D; /* สีน้ำเงินเข้มตามภาพ */
+--night-deep: #0D1126;
+--star-white: rgba(255, 255, 255, 0.3);
 --moon-yellow: #FFF9D7;
 --cloud-white: #FFFFFF;
---main-grad: linear-gradient(135deg, #2D305E 0%, #6A4C9C 50%, #9D72FF 100%);
+--main-grad: linear-gradient(135deg, #6A4C9C 0%, #9D72FF 100%);
 --dark: #1A1B41;
---glow: rgba(157, 114, 255, 0.5);
+--glow: rgba(157, 114, 255, 0.4);
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Mitr',sans-serif;}
 
 body{
-/* พื้นหลังท้องฟ้ากลางคืนไล่สี */
-background: radial-gradient(circle at top, #1A1B41 0%, #0B1026 100%);
+/* ปรับพื้นหลังให้เหมือนในรูป: สีน้ำเงินเข้มและมีจุดดาว */
+background-color: var(--night-bg);
+background-image: 
+    radial-gradient(circle at center, #1E254B 0%, #161B3D 100%),
+    radial-gradient(1.5px 1.5px at 20px 30px, var(--star-white), rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 100px 150px, var(--star-white), rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 150px 60px, var(--star-white), rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 250px 200px, var(--star-white), rgba(0,0,0,0));
+background-size: 100% 100%, 250px 250px, 250px 250px, 250px 250px, 250px 250px;
+background-attachment: fixed;
 display:flex;
 justify-content:center;
 position: relative;
 overflow-x: hidden;
 min-height: 100vh;
-}
-
-/* --- เอฟเฟกต์ดาวระยิบระยับ --- */
-body::before {
-content: "";
-position: fixed;
-top: 0; left: 0; width: 100%; height: 100%;
-background-image: 
-    radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0));
-background-repeat: repeat;
-background-size: 200px 200px;
-opacity: 0.3;
-z-index: -1;
-animation: starsTwinkle 4s infinite alternate;
-}
-
-@keyframes starsTwinkle {
-0% { opacity: 0.2; }
-100% { opacity: 0.5; }
 }
 
 .container{
@@ -63,27 +47,15 @@ position: relative;
 z-index: 1;
 }
 
-/* --- SECTION ขอบหยักเหมือนเมฆ --- */
+/* --- SECTION ขอบหยักเหมือนเมฆ (คงไว้ตามที่ต้องการ) --- */
 .section{
 background: var(--cloud-white);
 padding: 30px 20px;
 margin-bottom: 30px;
 position: relative;
-box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-/* ทำขอบหยักด้วย border-radius สลับค่า */
-border-radius: 50px 80px 50px 80px / 40px 30px 40px 30px;
+box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+border-radius: 60px 40px 60px 40px / 30px 40px 30px 40px;
 border: none;
-}
-
-/* เพิ่มเลเยอร์เงาฟุ้งๆ รอบเมฆ */
-.section::before {
-content: "";
-position: absolute;
-top: 0; left: 0; right: 0; bottom: 0;
-background: var(--cloud-white);
-z-index: -1;
-border-radius: 80px 40px 80px 40px / 30px 40px 30px 40px;
-box-shadow: 0 0 20px rgba(255,255,255,0.4);
 }
 
 h1,h2,h3{
@@ -103,7 +75,6 @@ height: 150px;
 margin: 0 auto 20px;
 }
 
-/* --- อิโมจิฟุ้งๆ (🪼🫧) --- */
 .logo-deco {
 position: absolute;
 font-size: 24px;
@@ -160,14 +131,12 @@ font-weight:500;
 transition: 0.3s;
 }
 
-/* ปุ่มเส้นประแบบท้องฟ้าคืน */
 .btn-outline{
 background:#fff;
 border: 2px dashed var(--night-deep);
 color: var(--night-deep);
 }
 
-/* ปุ่มหลักสี Midnight Gradient */
 .btn-main{
 background: var(--main-grad);
 color:#fff;
@@ -231,7 +200,7 @@ margin-top:15px;
 flex:1;
 padding:10px;
 border-radius:20px;
-background: rgba(255,255,255,0.9);
+background: rgba(255,255,255,1);
 text-decoration:none;
 color: var(--night-deep);
 font-size:13px;
