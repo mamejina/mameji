@@ -4,14 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mameji Store - Official</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 :root{
 --night-bg-deep: #05070A;
 --night-bg-main: #0B1026;
---night-purple: #1A1B41;
 --star-white: #FFFFFF;
 --moon-yellow: #FFF9D7;
 --white: #FFFFFF;
@@ -21,7 +19,6 @@
 --dark: #D0D7F2;
 --text-on-white: #1A1B41;
 --glow: rgba(157, 114, 255, 0.4);
---accent-red: #FF6B6B;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Mitr',sans-serif;}
@@ -42,33 +39,15 @@ content: "";
 position: fixed;
 top: 0; left: 0; width: 100%; height: 100%;
 background-image: 
-    radial-gradient(circle at 15% 15%, rgba(255, 249, 215, 0.12) 0%, rgba(0,0,0,0) 10%),
-    radial-gradient(circle at 35% 25%, rgba(255, 249, 215, 0.08) 0%, rgba(0,0,0,0) 8%),
-    radial-gradient(circle at 80% 10%, rgba(255, 249, 215, 0.15) 0%, rgba(0,0,0,0) 15%),
-    radial-gradient(circle at 25% 50%, rgba(255, 249, 215, 0.1) 0%, rgba(0,0,0,0) 11%),
-    radial-gradient(circle at 70% 60%, rgba(255, 249, 215, 0.06) 0%, rgba(0,0,0,0) 8%),
-    radial-gradient(circle at 10% 85%, rgba(255, 249, 215, 0.13) 0%, rgba(0,0,0,0) 14%),
-    radial-gradient(circle at 95% 75%, rgba(255, 249, 215, 0.17) 0%, rgba(0,0,0,0) 16%);
-background-repeat: no-repeat;
+    radial-gradient(circle at 10% 15%, rgba(255, 249, 215, 0.1) 0%, rgba(0,0,0,0) 10%),
+    radial-gradient(circle at 80% 20%, rgba(255, 249, 215, 0.1) 0%, rgba(0,0,0,0) 12%),
+    radial-gradient(circle at 30% 50%, rgba(255, 249, 215, 0.08) 0%, rgba(0,0,0,0) 15%),
+    radial-gradient(circle at 70% 80%, rgba(255, 249, 215, 0.1) 0%, rgba(0,0,0,0) 10%);
 z-index: -1;
-pointer-events: none;
 animation: floatBgDeco 15s infinite ease-in-out;
 }
 
-@keyframes floatBgDeco {
-0%, 100% { transform: translateY(0) translateX(0); }
-50% { transform: translateY(-15px) translateX(8px); }
-}
-
-.stars {
-position: fixed;
-top: 0; left: 0; width: 100%; height: 100%;
-background-image: radial-gradient(1px 1px at 20px 30px, var(--star-white), rgba(0,0,0,0)), radial-gradient(1.2px 1.2px at 150px 190px, var(--star-white), rgba(0,0,0,0));
-background-repeat: repeat;
-background-size: 200px 200px;
-opacity: 0.25;
-z-index: -2;
-}
+@keyframes floatBgDeco { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
 .container{max-width:500px; width:100%; padding:20px 15px 40px; position: relative; z-index: 1;}
 
@@ -91,122 +70,91 @@ background: var(--gradient-main);
 border-radius: 22px;
 }
 
-h1,h2,h3{color:var(--night-bg-main); margin-bottom: 10px;}
-h1 { font-size: 28px; color: var(--moon-yellow); text-shadow: 0 0 5px rgba(255, 249, 215, 0.6); text-align: center;}
-h2 { font-size: 20px; border-bottom: 1px dashed #D0D7F2; padding-bottom: 5px; display: flex; align-items: center; gap: 8px;}
+h1 { font-size: 28px; color: var(--moon-yellow); text-shadow: 0 0 5px rgba(255, 249, 215, 0.5); text-align: center; margin-bottom: 20px;}
+h2 { font-size: 20px; border-bottom: 1px dashed #D0D7F2; padding-bottom: 5px; margin-bottom: 15px;}
 
-.logo-wrapper {position: relative; width: 150px; height: 150px; margin: 0 auto 20px;}
-.logo-deco {position: absolute; font-size: 28px; animation: floatLogoDeco 3s infinite ease-in-out; text-shadow: 0 0 8px var(--moon-yellow); z-index: 3;}
-.logo-deco-1 { top: -10px; left: -10px; }
-.logo-deco-2 { top: -10px; right: -10px; }
-.logo-deco-3 { bottom: -10px; left: -10px; }
-.logo-deco-4 { bottom: -10px; right: -10px; }
-
-@keyframes floatLogoDeco { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-
-.logo{width:100%; height:100%; border-radius:50%; overflow:hidden; box-shadow:0 0 20px var(--glow); border: 5px solid var(--white); position: relative; z-index: 2;}
+.logo-wrapper {position: relative; width: 140px; height: 140px; margin: 0 auto 20px;}
+.logo{width:100%; height:100%; border-radius:50%; overflow:hidden; border: 5px solid var(--white); box-shadow:0 0 20px var(--glow);}
 .logo img{width:100%; height:100%; object-fit:cover;}
-
-.badges{display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-bottom:20px;}
-.badge{background:#fff; padding:8px 16px; border-radius:25px; font-size:13px; border: 1px solid #E0E6FF; display: flex; align-items: center; gap: 5px;}
-.badge::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--gradient-outline); display: inline-block;}
 
 .btn{display:block; text-align:center; padding:14px; border-radius:30px; text-decoration:none; margin-top:15px; font-weight:500; transition: 0.2s;}
 .btn-outline{background:#fff; border: 2px dashed var(--night-bg-main); color: var(--text-on-white);}
 .btn-main{background: var(--gradient-main); color:#fff; box-shadow: 0 4px 15px var(--glow);}
 
-.step{display:flex; align-items:center; gap:12px; margin-bottom:12px; padding: 12px; background: #F4F6FF; border-radius: 15px;}
+.step{display:flex; align-items:center; gap:12px; margin-bottom:10px; padding: 12px; background: #F4F6FF; border-radius: 15px;}
 .step-num{background: var(--gradient-main); color:#fff; width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:14px;}
-
-.rule-item {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
-    font-size: 14px;
-    line-height: 1.5;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #f0f0f0;
-}
-.rule-item:last-child { border-bottom: none; }
-.rule-bullet { color: var(--accent-red); font-weight: bold; }
 
 .price-row{display:flex; justify-content:space-between; align-items: center; margin-bottom:10px; background:#fff; padding:10px 15px; border-radius:15px; border: 1px solid #E0E6FF;}
 .price-tag{background: var(--gradient-outline); color: var(--night-bg-deep); padding:4px 12px; border-radius:20px; font-size:14px; font-weight: 600;}
 
+/* กฎของร้าน */
+.rule-list { list-style: none; }
+.rule-item { display: flex; gap: 8px; margin-bottom: 10px; font-size: 14px; line-height: 1.6; border-bottom: 1px solid #f0f0f0; padding-bottom: 5px;}
+.rule-item:last-child { border-bottom: none; }
+
 .footer{text-align:center; margin-top:40px;}
 .socials{display:flex; gap:10px; justify-content:center; margin-top:20px;}
 .socials a{flex:1; padding:10px; border-radius:20px; background: #fff; text-decoration:none; color:var(--text-on-white); font-size:13px; border: 1px solid #E0E6FF;}
-.small{font-size:12px; opacity:.7; margin-top:15px; color: var(--dark);}
+.small{font-size:12px; opacity:.7; margin-top:10px; color: var(--dark);}
 </style>
 </head>
 
 <body>
-<div class="stars"></div>
 <div class="container">
 
-<div class="section center" style="border:none;box-shadow:none;background:transparent;">
-    <div class="logo-wrapper">
-        <div class="logo-deco logo-deco-1">🌟</div>
-        <div class="logo-deco logo-deco-2">✨</div>
-        <div class="logo-deco logo-deco-3">✨</div>
-        <div class="logo-deco logo-deco-4">🌟</div>
-        <div class="logo"><img src="Cms.🍏3_20240328134844.png" alt="Mameji Logo"></div>
+    <div class="center" style="text-align:center; margin-bottom: 30px;">
+        <div class="logo-wrapper">
+            <div class="logo"><img src="Cms.🍏3_20240328134844.png" alt="Mameji Logo"></div>
+        </div>
+        <h1>Mameji (มาเมะจิ)</h1>
+        <p style="margin-bottom:20px;">รับทำป้ายและงานออกแบบ เริ่มต้น 69.- 🌟✨</p>
+        <a href="https://mameji08.github.io/Mameji/" class="btn btn-outline">เช็คคิวงาน ✨</a>
+        <a href="https://linkbio.co/7062403019HNn" class="btn btn-main">ตัวอย่างงานป้ายคลิ๊ก 🎨</a>
     </div>
-    <h1>Mameji (มาเมะจิ)</h1>
-    <p style="color:var(--dark); text-align:center; margin-bottom: 20px;">รับทำป้ายและงานออกแบบ เริ่มต้น 69.- 🌟✨</p>
-    <div class="badges">
-        <div class="badge">🎨 รับทำป้าย</div>
-        <div class="badge">✒️ วาดรูป</div>
-        <div class="badge">🌐 ลิงก์ไบโอ</div>
-        <div class="badge">✨ สติกเกอร์</div>
+
+    <div class="section">
+        <h2>📝 ขั้นตอนการสั่งงาน</h2>
+        <div class="step"><div class="step-num">1</div><div>ทักสอบถาม แจ้งประเภทงาน</div></div>
+        <div class="step"><div class="step-num">2</div><div>ชำระเงิน แจ้งสลิปโอนเงิน</div></div>
+        <div class="step"><div class="step-num">3</div><div>เลือกแบบบล็อก ตูน หัวป้าย</div></div>
+        <div class="step"><div class="step-num">4</div><div>บรีฟรายละเอียดงาน รอเช็คงาน</div></div>
+        <div class="step"><div class="step-num">5</div><div>เช็คงานไม่แก้ = ส่งงานทางไดร์ฟ</div></div>
     </div>
-    <a href="https://mameji08.github.io/Mameji/" class="btn btn-outline">เช็คคิวงาน ✨</a>
-    <a href="https://linkbio.co/7062403019HNn" class="btn btn-main">ตัวอย่างงานป้ายคลิ๊ก 🎨</a>
-</div>
 
-<div class="section">
-    <h2>📝 ขั้นตอนการสั่งงาน</h2>
-    <div class="step"><div class="step-num">1</div><div>ทักสอบถาม แจ้งประเภทงาน</div></div>
-    <div class="step"><div class="step-num">2</div><div>ชำระเงิน แจ้งสลิปโอนเงิน</div></div>
-    <div class="step"><div class="step-num">3</div><div>เลือกแบบบล็อก ตูน หัวป้าย</div></div>
-    <div class="step"><div class="step-num">4</div><div>บรีฟรายละเอียดงาน รอเช็คงาน</div></div>
-    <div class="step"><div class="step-num">5</div><div>เช็คงานไม่แก้ = ส่งงานทางไดร์ฟ</div></div>
-    <a href="https://drive.google.com/drive/folders/1wPLBiOy2-jysBcdxQnXqPfTuHtJdPylI" class="btn btn-main">เลือกของตกแต่งคลิ๊ก</a>
-</div>
-
-<div class="section">
-    <h2>💰 รายการราคางาน</h2>
-    <div class="price-row"><span>ป้ายแนว เซนเซิฟ</span><span class="price-tag">เริ่ม 69฿</span></div>
-    <div class="price-row"><span>ป้ายแนวอื่นๆ</span><span class="price-tag">69–89฿</span></div>
-    <div class="price-row"><span>ป้ายสั่งออกแบบ</span><span class="price-tag">79–129฿</span></div>
-    <div class="price-row"><span>สติกเกอร์แชท</span><span class="price-tag">29–69฿</span></div>
-    <div class="price-row"><span>วาดรูป</span><span class="price-tag">เริ่ม 50฿</span></div>
-    <div class="price-row"><span>ลิงก์ไบโอ/ชีทคิว/ทำเว็บ</span><span class="price-tag">49–179฿</span></div>
-    <div class="price-row"><span>เข้ากลุ่มต่างๆ</span><span class="price-tag">39–999฿+</span></div>
-    <p class="small" style="text-align:center; color: var(--text-on-white);">*เร่งงาน +20฿ ต่อชิ้น / แก้ฟรีถ้าผิดบรีฟ</p>
-</div>
-
-<div class="section">
-    <h2>⚖️ กฎของร้าน</h2>
-    <div class="rule-item"><span class="rule-bullet">-</span><span>ไม่คืนตังทุกกรณีค่ะ ยกเว้นร้านเสนอคืน</span></div>
-    <div class="rule-item"><span class="rule-bullet">-</span><span>ยังไม่เลยเดดไล งดเร่ง งดจิก หรือ ส่องงานค่ะ</span></div>
-    <div class="rule-item"><span class="rule-bullet">-</span><span>ไม่อนุญาตให้นำงานไปขายต่อ แจก แถม ทุกกรณีหากไม่ใช้แล้ว [กรณีเป็น ป้าย ปกกลุ่ม ตัวอย่างกลุ่ม อนุญาตค่ะ]</span></div>
-    <div class="rule-item"><span class="rule-bullet">-</span><span>งานจะถูกลบทุกวันที่ 25 ของทุกเดือนไม่เซฟงานไม่รู้ด้วยนะคะ</span></div>
-    <div class="rule-item"><span class="rule-bullet">-</span><span>ไม่รับแก้งานจากร้านอื่นค่ะ</span></div>
-    <div class="rule-item"><span class="rule-bullet">-</span><span>ห้ามตัด แคบรูป ไปสอบถามพิกัด งานทุกงานมีเจ้าของ</span></div>
-    <div class="rule-item"><span class="rule-bullet">-</span><span style="color:var(--night-bg-main); font-weight:500;">อยากได้พิกัดสอบถามแอดได้ค่ะใจดี</span></div>
-    <a href="https://www.facebook.com/man.phea.xrxy.na?" class="btn btn-main">สอบถามเพิ่มเติม</a>
-</div>
-
-<div class="footer">
-    <a href="https://line.me/ti/p/ogYjoWHAIO" class="btn btn-main">สั่งงานผ่าน LINE คลิก 🎀</a>
-    <div class="socials">
-        <a href="https://www.facebook.com/man.phea.xrxy.na?">Facebook</a>
-        <a href="https://line.me/ti/p/ogYjoWHAIO">Line</a>
-        <a href="https://linkbio.co/7062403019HNn">Portfolio</a>
+    <div class="section">
+        <h2>💰 รายการราคางาน</h2>
+        <div class="price-row"><span>ป้ายแนว เซนเซิฟ</span><span class="price-tag">เริ่ม 69฿</span></div>
+        <div class="price-row"><span>ป้ายแนวอื่นๆ</span><span class="price-tag">69–89฿</span></div>
+        <div class="price-row"><span>ป้ายสั่งออกแบบ</span><span class="price-tag">79–129฿</span></div>
+        <div class="price-row"><span>สติกเกอร์แชท</span><span class="price-tag">29–69฿</span></div>
+        <div class="price-row"><span>วาดรูป</span><span class="price-tag">เริ่ม 50฿</span></div>
+        <div class="price-row"><span>ลิงก์ไบโอ/ชีทคิว/ทำเว็บ</span><span class="price-tag">49–179฿</span></div>
+        <div class="price-row"><span>เข้ากลุ่มต่างๆ</span><span class="price-tag">39–999฿+</span></div>
+        <p style="font-size:12px; text-align:center; margin-top:10px;">*เร่งงาน +20฿ ต่อชิ้น / แก้ฟรีถ้าผิดบรีฟ</p>
     </div>
-    <p class="small">© 2026 Mameji Store | งานลบทุกวันที่ 25 ของเดือน</p>
-</div>
+
+    <div class="section">
+        <h2>⚖️ กฎร้าน</h2>
+        <div class="rule-list">
+            <div class="rule-item"><span>-</span><span>ไม่คืนตังทุกกรณีค่ะ ยกเว้นร้านเสนอคืน</span></div>
+            <div class="rule-item"><span>-</span><span>ยังไม่เลยเดดไล งดเร่ง งดจิก หรือ ส่องงานค่ะ</span></div>
+            <div class="rule-item"><span>-</span><span>ไม่อนุญาตให้นำงานไปขายต่อ แจก แถม ทุกกรณีหากไม่ใช้แล้ว [กรณีเป็น ป้าย ปกกลุ่ม ตัวอย่างกลุ่ม อนุญาตค่ะ]</span></div>
+            <div class="rule-item"><span>-</span><span>งานจะถูกลบทุกวันที่ 25 ของทุกเดือนไม่เซฟงานไม่รู้ด้วยนะคะ</span></div>
+            <div class="rule-item"><span>-</span><span>ไม่รับแก้งานจากร้านอื่นค่ะ</span></div>
+            <div class="rule-item"><span>-</span><span>ห้ามตัด แคบรูป ไปสอบถามพิกัด งานทุกงานมีเจ้าของ</span></div>
+            <div class="rule-item"><span>-</span><span style="font-weight:500; color:#6A4C9C;">อยากได้พิกัดสอบถามแอดได้ค่ะใจดี</span></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <a href="https://line.me/ti/p/ogYjoWHAIO" class="btn btn-main">สั่งงานผ่าน LINE คลิก 🎀</a>
+        <div class="socials">
+            <a href="https://www.facebook.com/man.phea.xrxy.na?">Facebook</a>
+            <a href="https://line.me/ti/p/ogYjoWHAIO">Line</a>
+            <a href="https://linkbio.co/7062403019HNn">Portfolio</a>
+        </div>
+        <p class="small">© 2026 Mameji Store | งานลบทุกวันที่ 25 ของเดือน</p>
+    </div>
 
 </div>
 </body>
