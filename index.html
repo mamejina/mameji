@@ -41,37 +41,63 @@ color: var(--dark);
 min-height: 100vh;
 }
 
-/* --- พื้นหลังฟุ้งๆ (อิโมจิใหม่ 🌟✨) --- */
-body::before,
-body::after {
-content: '🌟 ✨ 🌟 ✨';
+/* --- พื้นหลังฟุ้งๆ (อิโมจิกระจายตัวทั่ว 🌟✨ ใหม่) --- */
+body::before {
+content: "";
 position: fixed;
-font-size: 20px; /* ปรับขนาดเล็กน้อย */
-opacity: 0.15; /* ความโปร่งใส */
+top: 0; left: 0; width: 100%; height: 100%;
+/* ใช้ background-image แบบ radial-gradient หลายชั้นเพื่อกระจายอิโมจิ */
+background-image: 
+    radial-gradient(circle at 10% 10%, rgba(255, 249, 215, 0.15) 0%, rgba(0,0,0,0) 10%),
+    radial-gradient(circle at 30% 20%, rgba(255, 249, 215, 0.1) 0%, rgba(0,0,0,0) 8%),
+    radial-gradient(circle at 50% 15%, rgba(255, 249, 215, 0.12) 0%, rgba(0,0,0,0) 12%),
+    radial-gradient(circle at 70% 25%, rgba(255, 249, 215, 0.08) 0%, rgba(0,0,0,0) 9%),
+    radial-gradient(circle at 90% 10%, rgba(255, 249, 215, 0.18) 0%, rgba(0,0,0,0) 15%),
+    radial-gradient(circle at 20% 40%, rgba(255, 249, 215, 0.11) 0%, rgba(0,0,0,0) 11%),
+    radial-gradient(circle at 40% 50%, rgba(255, 249, 215, 0.09) 0%, rgba(0,0,0,0) 10%),
+    radial-gradient(circle at 60% 45%, rgba(255, 249, 215, 0.13) 0%, rgba(0,0,0,0) 13%),
+    radial-gradient(circle at 80% 55%, rgba(255, 249, 215, 0.07) 0%, rgba(0,0,0,0) 8%),
+    radial-gradient(circle at 15% 70%, rgba(255, 249, 215, 0.16) 0%, rgba(0,0,0,0) 14%),
+    radial-gradient(circle at 35% 80%, rgba(255, 249, 215, 0.1) 0%, rgba(0,0,0,0) 9%),
+    radial-gradient(circle at 55% 75%, rgba(255, 249, 215, 0.14) 0%, rgba(0,0,0,0) 12%),
+    radial-gradient(circle at 75% 85%, rgba(255, 249, 215, 0.08) 0%, rgba(0,0,0,0) 10%),
+    radial-gradient(circle at 95% 70%, rgba(255, 249, 215, 0.19) 0%, rgba(0,0,0,0) 16%);
+background-repeat: no-repeat;
+background-size: 100% 100%;
 z-index: -1;
 pointer-events: none;
-color: var(--moon-yellow); /* สีเหลืองนวล */
+animation: floatBgDeco 15s infinite ease-in-out;
 }
 
-body::before {
-top: 15%;
-left: 10%;
-animation: floatBg 20s infinite ease-in-out;
-}
-
+/* เพิ่มเลเยอร์อิโมจิอีกชั้นเพื่อให้ดูหนาตาขึ้น */
 body::after {
-bottom: 15%;
-right: 10%;
-animation: floatBg 25s infinite ease-in-out reverse;
-content: '✨ 🌟 ✨ 🌟';
+content: "";
+position: fixed;
+top: 0; left: 0; width: 100%; height: 100%;
+background-image: 
+    radial-gradient(circle at 5% 85%, rgba(255, 249, 215, 0.12) 0%, rgba(0,0,0,0) 11%),
+    radial-gradient(circle at 25% 95%, rgba(255, 249, 215, 0.09) 0%, rgba(0,0,0,0) 9%),
+    radial-gradient(circle at 45% 90%, rgba(255, 249, 215, 0.14) 0%, rgba(0,0,0,0) 13%),
+    radial-gradient(circle at 65% 98%, rgba(255, 249, 215, 0.07) 0%, rgba(0,0,0,0) 8%),
+    radial-gradient(circle at 85% 92%, rgba(255, 249, 215, 0.16) 0%, rgba(0,0,0,0) 15%),
+    radial-gradient(circle at 15% 55%, rgba(255, 249, 215, 0.1) 0%, rgba(0,0,0,0) 10%),
+    radial-gradient(circle at 35% 65%, rgba(255, 249, 215, 0.13) 0%, rgba(0,0,0,0) 12%),
+    radial-gradient(circle at 55% 60%, rgba(255, 249, 215, 0.08) 0%, rgba(0,0,0,0) 9%),
+    radial-gradient(circle at 75% 70%, rgba(255, 249, 215, 0.15) 0%, rgba(0,0,0,0) 14%),
+    radial-gradient(circle at 95% 65%, rgba(255, 249, 215, 0.09) 0%, rgba(0,0,0,0) 10%);
+background-repeat: no-repeat;
+background-size: 100% 100%;
+z-index: -1;
+pointer-events: none;
+animation: floatBgDeco 18s infinite ease-in-out reverse;
 }
 
-@keyframes floatBg {
+@keyframes floatBgDeco {
 0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
-50% { transform: translateY(-30px) translateX(15px) rotate(10deg); }
+50% { transform: translateY(-20px) translateX(10px) rotate(5deg); }
 }
 
-/* --- เอฟเฟกต์ดาวระยิบระยับ --- */
+/* เพิ่มเอฟเฟกต์ดาวระยิบระยับ (คงไว้) */
 .stars {
 position: fixed;
 top: 0; left: 0; width: 100%; height: 100%;
@@ -84,14 +110,14 @@ background-image:
     radial-gradient(1.5px 1.5px at 150px 190px, var(--star-white), rgba(0,0,0,0));
 background-repeat: repeat;
 background-size: 200px 200px;
-opacity: 0.4;
+opacity: 0.3; /* ลดความเข้มลงเล็กน้อยเพื่อให้เข้ากับอิโมจิใหม่ */
 z-index: -2;
 animation: starsTwinkle 4s infinite alternate;
 }
 
 @keyframes starsTwinkle {
-0% { opacity: 0.3; }
-100% { opacity: 0.6; }
+0% { opacity: 0.2; }
+100% { opacity: 0.5; }
 }
 
 .container{
