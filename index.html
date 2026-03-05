@@ -23,12 +23,45 @@ body{
 background:var(--bg);
 display:flex;
 justify-content:center;
+position: relative; /* สำหรับ floating elements */
+overflow-x: hidden; /* กันสกอลบาร์แนวนอน */
+}
+
+/* --- พื้นหลังฟุ้งๆ --- */
+body::before,
+body::after {
+content: '🪼 🫧 🪼 🫧';
+position: fixed;
+font-size: 30px;
+opacity: 0.15; /* ความโปร่งใส */
+z-index: -1; /* อยู่หลังเนื้อหา */
+pointer-events: none; /* กดไม่ได้ */
+}
+
+body::before {
+top: 10%;
+left: 5%;
+animation: floatBg 15s infinite ease-in-out;
+}
+
+body::after {
+bottom: 10%;
+right: 5%;
+animation: floatBg 20s infinite ease-in-out reverse;
+content: '🫧 🪼 🫧 🪼'; /* สลับลำดับ */
+}
+
+@keyframes floatBg {
+0%, 100% { transform: translateY(0) translateX(0); }
+50% { transform: translateY(-20px) translateX(10px); }
 }
 
 .container{
 max-width:500px;
 width:100%;
 padding:20px 15px 40px;
+position: relative; /* สำหรับ floating elements */
+z-index: 1; /* อยู่หน้าเนื้อหาพื้นหลัง */
 }
 
 .section{
@@ -38,17 +71,46 @@ padding:25px 20px;
 margin-bottom:20px;
 box-shadow:0 8px 20px rgba(0,0,0,0.05);
 border:2px solid var(--main);
+position: relative; /* สำหรับ floating elements */
 }
 
 h1,h2,h3{color:var(--dark);}
 .center{text-align:center;}
 
+.logo-wrapper {
+position: relative; /* สำหรับ floating elements รอบๆ */
+width: 150px;
+height: 150px;
+margin: 0 auto 20px;
+}
+
+/* --- อิโมจิฟุ้งๆ รอบโลโก้ --- */
+.logo-deco {
+position: absolute;
+font-size: 24px;
+opacity: 0.7;
+pointer-events: none;
+animation: floatLogoDeco 4s infinite ease-in-out;
+}
+
+.logo-deco-1 { top: -10px; left: -10px; animation-delay: 0s; }
+.logo-deco-2 { top: -10px; right: -10px; animation-delay: 1s; }
+.logo-deco-3 { bottom: -10px; left: -10px; animation-delay: 2s; }
+.logo-deco-4 { bottom: -10px; right: -10px; animation-delay: 3s; }
+
+@keyframes floatLogoDeco {
+0%, 100% { transform: translateY(0) scale(1); opacity: 0.7; }
+50% { transform: translateY(-10px) scale(1.1); opacity: 1; }
+}
+
 .logo{
-width:150px;height:150px;
+width:100%;
+height:100%;
 border-radius:50%;
 overflow:hidden;
-margin:0 auto 20px;
 box-shadow:0 6px 20px var(--glow);
+position: relative; /* ให้อยู่หน้า deco */
+z-index: 2;
 }
 
 .logo img{width:100%;height:100%;object-fit:cover;}
@@ -160,8 +222,14 @@ border:1px solid #ffeef5;
 
 <div class="section center" style="border:none;box-shadow:none;background:transparent;">
 
+<div class="logo-wrapper">
+<div class="logo-deco logo-deco-1">🪼</div>
+<div class="logo-deco logo-deco-2">🫧</div>
+<div class="logo-deco logo-deco-3">🫧</div>
+<div class="logo-deco logo-deco-4">🪼</div>
 <div class="logo">
 <img src="Cms.🍏3_20240328134844.png" alt="Mameji Logo">
+</div>
 </div>
 
 <h1>Mameji (มาเมะจิ)</h1>
