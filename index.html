@@ -20,7 +20,7 @@
 --gradient-outline: linear-gradient(135deg, #84A9FF 0%, var(--moon-yellow) 100%);
 --dark: #D0D7F2;
 --text-on-white: #1A1B41;
---glow: rgba(157, 114, 255, 0.5);
+--glow: rgba(157, 114, 255, 0.4);
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Mitr',sans-serif;}
@@ -41,13 +41,13 @@ content: "";
 position: fixed;
 top: 0; left: 0; width: 100%; height: 100%;
 background-image: 
-    radial-gradient(circle at 15% 15%, rgba(255, 249, 215, 0.15) 0%, rgba(0,0,0,0) 10%),
-    radial-gradient(circle at 35% 25%, rgba(255, 249, 215, 0.1) 0%, rgba(0,0,0,0) 8%),
-    radial-gradient(circle at 80% 10%, rgba(255, 249, 215, 0.18) 0%, rgba(0,0,0,0) 15%),
-    radial-gradient(circle at 25% 50%, rgba(255, 249, 215, 0.11) 0%, rgba(0,0,0,0) 11%),
-    radial-gradient(circle at 70% 60%, rgba(255, 249, 215, 0.07) 0%, rgba(0,0,0,0) 8%),
-    radial-gradient(circle at 10% 85%, rgba(255, 249, 215, 0.16) 0%, rgba(0,0,0,0) 14%),
-    radial-gradient(circle at 95% 75%, rgba(255, 249, 215, 0.19) 0%, rgba(0,0,0,0) 16%);
+    radial-gradient(circle at 15% 15%, rgba(255, 249, 215, 0.12) 0%, rgba(0,0,0,0) 10%),
+    radial-gradient(circle at 35% 25%, rgba(255, 249, 215, 0.08) 0%, rgba(0,0,0,0) 8%),
+    radial-gradient(circle at 80% 10%, rgba(255, 249, 215, 0.15) 0%, rgba(0,0,0,0) 15%),
+    radial-gradient(circle at 25% 50%, rgba(255, 249, 215, 0.1) 0%, rgba(0,0,0,0) 11%),
+    radial-gradient(circle at 70% 60%, rgba(255, 249, 215, 0.06) 0%, rgba(0,0,0,0) 8%),
+    radial-gradient(circle at 10% 85%, rgba(255, 249, 215, 0.13) 0%, rgba(0,0,0,0) 14%),
+    radial-gradient(circle at 95% 75%, rgba(255, 249, 215, 0.17) 0%, rgba(0,0,0,0) 16%);
 background-repeat: no-repeat;
 z-index: -1;
 pointer-events: none;
@@ -56,16 +56,16 @@ animation: floatBgDeco 15s infinite ease-in-out;
 
 @keyframes floatBgDeco {
 0%, 100% { transform: translateY(0) translateX(0); }
-50% { transform: translateY(-20px) translateX(10px); }
+50% { transform: translateY(-15px) translateX(8px); }
 }
 
 .stars {
 position: fixed;
 top: 0; left: 0; width: 100%; height: 100%;
-background-image: radial-gradient(1px 1px at 20px 30px, var(--star-white), rgba(0,0,0,0)), radial-gradient(1.5px 1.5px at 150px 190px, var(--star-white), rgba(0,0,0,0));
+background-image: radial-gradient(1px 1px at 20px 30px, var(--star-white), rgba(0,0,0,0)), radial-gradient(1.2px 1.2px at 150px 190px, var(--star-white), rgba(0,0,0,0));
 background-repeat: repeat;
 background-size: 200px 200px;
-opacity: 0.3;
+opacity: 0.25;
 z-index: -2;
 }
 
@@ -91,11 +91,12 @@ border-radius: 22px;
 }
 
 h1,h2,h3{color:var(--night-bg-main); margin-bottom: 10px;}
-h1 { font-size: 28px; color: var(--moon-yellow); text-shadow: 0 0 15px var(--moon-yellow); text-align: center;}
+/* ลดความเรืองแสงตรงชื่อลงตามรีเควส */
+h1 { font-size: 28px; color: var(--moon-yellow); text-shadow: 0 0 5px rgba(255, 249, 215, 0.6); text-align: center;}
 h2 { font-size: 20px; border-bottom: 1px dashed #D0D7F2; padding-bottom: 5px;}
 
 .logo-wrapper {position: relative; width: 150px; height: 150px; margin: 0 auto 20px;}
-.logo-deco {position: absolute; font-size: 28px; animation: floatLogoDeco 3s infinite ease-in-out; text-shadow: 0 0 10px var(--moon-yellow); z-index: 3;}
+.logo-deco {position: absolute; font-size: 28px; animation: floatLogoDeco 3s infinite ease-in-out; text-shadow: 0 0 8px var(--moon-yellow); z-index: 3;}
 .logo-deco-1 { top: -10px; left: -10px; }
 .logo-deco-2 { top: -10px; right: -10px; }
 .logo-deco-3 { bottom: -10px; left: -10px; }
@@ -103,7 +104,7 @@ h2 { font-size: 20px; border-bottom: 1px dashed #D0D7F2; padding-bottom: 5px;}
 
 @keyframes floatLogoDeco { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-.logo{width:100%; height:100%; border-radius:50%; overflow:hidden; box-shadow:0 0 25px var(--glow); border: 5px solid var(--white); position: relative; z-index: 2;}
+.logo{width:100%; height:100%; border-radius:50%; overflow:hidden; box-shadow:0 0 20px var(--glow); border: 5px solid var(--white); position: relative; z-index: 2;}
 .logo img{width:100%; height:100%; object-fit:cover;}
 
 .badges{display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-bottom:20px;}
@@ -175,10 +176,11 @@ h2 { font-size: 20px; border-bottom: 1px dashed #D0D7F2; padding-bottom: 5px;}
 </div>
 
 <div class="footer">
-    <a href="https://line.me/ti/p/ogYjoWHAIO" class="btn btn-main">สั่งงานผ่าน LINE คลิก 🎀</a>
+    <a href="https://www.facebook.com/man.phea.xrxy.na?" class="btn btn-main">สั่งงานผ่าน Facebook คลิก 🎀</a>
+    
     <div class="socials">
-        <a href="https://www.facebook.com/man.phea.xrxy.na?">Facebook</a>
         <a href="https://line.me/ti/p/ogYjoWHAIO">Line</a>
+        <a href="https://www.facebook.com/man.phea.xrxy.na?">Facebook</a>
         <a href="https://linkbio.co/7062403019HNn">Portfolio</a>
     </div>
     <p class="small">© 2026 Mameji Store | งานลบทุกวันที่ 25 ของเดือน</p>
